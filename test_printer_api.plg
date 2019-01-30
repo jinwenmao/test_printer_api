@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: test_printer_api - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSPC6A2.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/test_printer_api.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\work_zw\test_printer_api\test_printer_apiDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\hope2\AppData\Local\Temp\RSPC6A2.tmp" 
+Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSPC6A3.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/test_printer_api.pdb" /debug /machine:I386 /out:"Debug/test_printer_api.exe" /pdbtype:sept 
+.\Debug\test_printer_api.obj
+.\Debug\test_printer_apiDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\test_printer_api.res
+]
+Creating command line "link.exe @C:\Users\hope2\AppData\Local\Temp\RSPC6A3.tmp"
+<h3>Output Window</h3>
+Compiling...
+test_printer_apiDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+test_printer_api.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
