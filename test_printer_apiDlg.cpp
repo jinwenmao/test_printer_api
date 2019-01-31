@@ -176,6 +176,7 @@ HCURSOR CTest_printer_apiDlg::OnQueryDragIcon()
 void CTest_printer_apiDlg::OnButtonTest() 
 {
 	// TODO: Add your control notification handler code here
-	GetLandscapeDevMode(NULL,"HP LaserJet 1020");
+	GetLandscapeDevMode(NULL,"PDF-XChange Lite");//"HP LaserJet 1020");
+		GetLandscapeDevMode(NULL,"HP LaserJet 1020");//"PDF-XChange Lite");//
 	
 }

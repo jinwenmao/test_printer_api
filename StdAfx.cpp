@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include <WINSPOOL.H>
-
+//Winspool.h
 
  LPDEVMODE GetLandscapeDevMode(HWND hWnd, char *pDevice)
    {
@@ -13,10 +13,32 @@
    LPDEVMODE   pDevMode;
    DWORD       dwNeeded, dwRet;
  
+   PRINTER_DEFAULTSA temp;
+   temp.pDatatype = NULL;
+   temp.pDevMode = NULL;
+   temp.DesiredAccess = PRINTER_ALL_ACCESS;
+	   //PRINTER_ACCESS_ADMINISTER | PRINTER_ACCESS_USE;
+	   //PRINTER_ALL_ACCESS;
    /* Start by opening the printer */ 
-   if (!OpenPrinter(pDevice, &hPrinter, NULL))
+   if (!OpenPrinter(pDevice, &hPrinter, &temp))
        return NULL;
- 
+//OpenPrinter2
+
+///test by jwm
+  //GetPrinter(hPrinter, 2, IntPtr.Zero, 0, out nBytesNeeded);
+   DWORD lnBytesNeeded;
+   GetPrinter(hPrinter,2,NULL,NULL,&lnBytesNeeded);
+   LPBYTE  prtInfo = new BYTE[lnBytesNeeded];
+    PRINTER_INFO_2 * linfo ;
+   GetPrinter(hPrinter,2,prtInfo,lnBytesNeeded,&lnBytesNeeded);
+	linfo = (PRINTER_INFO_2 *)prtInfo;
+  
+
+   
+   ///end test by jwm
+   
+
+
    /*
     * Step 1:
     * Allocate a buffer of the correct size.
@@ -51,17 +73,28 @@
    /*
         * Make changes to the DevMode which are supported.
     */ 
-   if (pDevMode->dmFields & DM_ORIENTATION)
-   {
-       /* If the printer supports paper orientation, set it.*/ 
-       pDevMode->dmOrientation = DMORIENT_LANDSCAPE;
-   }
+//    if (pDevMode->dmFields & DM_ORIENTATION)
+//    {
+//        /* If the printer supports paper orientation, set it.*/ 
+//        pDevMode->dmOrientation = DMORIENT_LANDSCAPE;
+//    }
+
+//    if(linfo->pDevMode->dmFields & DM_ORIENTATION)
+//    {
+// 	   linfo->pDevMode->dmOrientation = DMORIENT_LANDSCAPE;
+//    }
  
-   if (pDevMode->dmFields & DM_DUPLEX)
-    {
-       /* If it supports duplex printing, use it. */ 
-       pDevMode->dmDuplex = DMDUP_HORIZONTAL;
-   }
+  // linfo->pDevMode->dmPaperSize =DMPAPER_A5;
+ //  linfo->pDevMode->dmPaperWidth = 2100;
+ //  linfo->pDevMode->dmPaperLength = 1480;
+//    if (pDevMode->dmFields & DM_DUPLEX)
+//     {
+//        /* If it supports duplex printing, use it. */ 
+//        pDevMode->dmDuplex = DMDUP_HORIZONTAL;
+//    }
+//    pDevMode->dmPaperSize = 9;
+//    pDevMode->dmPaperWidth = 2100;
+//    pDevMode->dmPaperLength = 2970;
  
    /*
     * Step 3:
@@ -72,11 +105,13 @@
     dwRet = DocumentProperties(hWnd,
        hPrinter,
        pDevice,
-       pDevMode,       /* Reuse our buffer for output. */ 
-       pDevMode,       /* Pass the driver our changes. */ 
+       linfo->pDevMode,       /* Reuse our buffer for output. */ 
+       linfo->pDevMode,       /* Pass the driver our changes. */ 
        DM_IN_BUFFER |  /* Commands to Merge our changes and */ 
        DM_OUT_BUFFER); /* write the result. */ 
- 
+
+linfo->pSecurityDescriptor = NULL;
+	SetPrinter(hPrinter,2,(LPBYTE)linfo,0);
    /* Finished with the printer */ 
    ClosePrinter(hPrinter);
  
@@ -96,3 +131,25 @@
 // 来源：CSDN 
 // 原文：https://blog.csdn.net/hjfjoy/article/details/4250164 
 // 版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
+
+
+
+// // Specify the limited management permission.
+// PRINTER_DEFAULTS defaults = {};
+// defaults.DesiredAccess = PRINTER_ACCESS_MANAGE_LIMITED;
+// 
+// // Open a printer to which the user has no administrative rights.
+// HANDLE printer = nullptr;
+// assert(!OpenPrinter2(L QueueWithNoAdminRights , // Queue name
+//                      &printer,                  // Printer handle
+//                      &defaults,                 // Printer defaults
+//                      nullptr));                 // Printer options
+// 
+// assert(GetLastError() == ERROR_ACCESS_DENIED);
+// 
+// if (printer)
+// {
+//     ClosePrinter(printer);
+// }

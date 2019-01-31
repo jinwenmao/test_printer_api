@@ -6,23 +6,34 @@
 --------------------Configuration: test_printer_api - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSPC6A2.tmp" with contents
+Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSP70B7.tmp" with contents
 [
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/test_printer_api.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
-"D:\work_zw\test_printer_api\test_printer_apiDlg.cpp"
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/test_printer_api.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\WORK_ZW\test_printer_api\test_printer_api.cpp"
+"D:\WORK_ZW\test_printer_api\test_printer_apiDlg.cpp"
 ]
-Creating command line "cl.exe @C:\Users\hope2\AppData\Local\Temp\RSPC6A2.tmp" 
-Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSPC6A3.tmp" with contents
+Creating command line "cl.exe @C:\Users\hope2\AppData\Local\Temp\RSP70B7.tmp" 
+Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSP70B8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/test_printer_api.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\WORK_ZW\test_printer_api\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\hope2\AppData\Local\Temp\RSP70B8.tmp" 
+Creating temporary file "C:\Users\hope2\AppData\Local\Temp\RSP70B9.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/test_printer_api.pdb" /debug /machine:I386 /out:"Debug/test_printer_api.exe" /pdbtype:sept 
+.\Debug\StdAfx.obj
 .\Debug\test_printer_api.obj
 .\Debug\test_printer_apiDlg.obj
-.\Debug\StdAfx.obj
 .\Debug\test_printer_api.res
 ]
-Creating command line "link.exe @C:\Users\hope2\AppData\Local\Temp\RSPC6A3.tmp"
+Creating command line "link.exe @C:\Users\hope2\AppData\Local\Temp\RSP70B9.tmp"
 <h3>Output Window</h3>
 Compiling...
+StdAfx.cpp
+Compiling...
+Skipping... (no relevant changes detected)
+test_printer_api.cpp
 test_printer_apiDlg.cpp
 Linking...
 
